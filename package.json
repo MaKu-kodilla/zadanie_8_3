@@ -4,16 +4,16 @@
   "description": "Zadanie 8.2 instalacja js-hint",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test:html npm run test:js",
+    "test": "npm-run-all test:*",
     "test:html": "globstar nu-html-checker *.html",
     "test:js": "globstar jshint js/*.js",
 	
-	"init-project": "npm install && npm run init:dirs && npm run init:files && npm run init:gitignore",
+	"init-project": "npm install && npm-run-all init:*",
     "init:dirs": "mkdirp sass css vendor images js",
     "init:files": "touch README.md index.html sass/style.scss js/script.js",
     "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
     
-	"build": "npm-run-all build:clean build:sass build:autoprefixer build-dev:sass",
+	"build": "npm-run-all build:*",
     "build:clean": "rimraf css/*",
     "build:sass": "node-sass --output-style compact -o css sass",
     "build:autoprefixer": "autoprefixer-cli css/style.css",
